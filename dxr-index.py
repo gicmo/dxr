@@ -424,7 +424,8 @@ def main(argv):
   debugfile = None
 
   try:
-    ctypes_init_tokenizer = ctypes.CDLL("sqlite/libdxr-code-tokenizer.so").dxr_code_tokenizer_init
+    dll_path = "%s/sqlite/libdxr-code-tokenizer.so" % os.getenv("DXRSRC")
+    ctypes_init_tokenizer = ctypes.CDLL(dll_path).dxr_code_tokenizer_init
     ctypes_init_tokenizer()
   except:
     msg = sys.exc_info()[1] # Python 2/3 compatibility
